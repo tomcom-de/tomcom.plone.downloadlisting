@@ -1,0 +1,57 @@
+<metal:block metal:define-macro="main">
+    <div class="download-navigation"
+         tal:define="downloadlisting nocall:here/@@downloadlisting;
+                     form nocall:request/form;
+                     uid uid | form/uid | nothing;
+                     listing form/listing | string:1;
+                     curDepth python:len(context.getPhysicalPath())">
+
+        <tal:block tal:repeat="brain python:downloadlisting.get_level(uid,'Folder')">
+            <div tal:define="childs python:downloadlisting.get_level(brain.UID,'Folder');
+                             level python:len(brain.getPath().split('/'))-curDepth"
+                 tal:attributes="id string:li-${brain/UID};
+                                 class python:repeat['brain'].odd() and 'even level'+str(level) or 'odd level'+str(level)">
+
+                <a tal:attributes="href here/aq_parent/absolute_url;
+                                   id string:a-${brain/UID};
+                                   class python:'parent-click span-padding'+(childs and ' folder' or '')"
+                   tal:content="python:brain.Title+'('+str(len(downloadlisting.get_all(uid=brain.UID)))+')'"/>
+
+                <div tal:attributes="id string:content-${brain/UID}" style="display:None">
+                    <div class="well">
+                        <table class="table">
+                            <tal:block tal:repeat="brain python:downloadlisting.get_level(brain.UID,['Image','File'])">
+                                <tal:block tal:condition="python:listing=='1'">
+                                    <metal:block metal:use-macro="here/download_listing_macro/macros/main"/>
+                                </tal:block>
+                                <tal:block tal:condition="python:listing=='2'">
+                                   <metal:block metal:use-macro="here/download_listing_media_item/macros/main"/>
+                                </tal:block>
+                            </tal:block>
+                        </table>
+                    </div>
+                </div>
+
+                <span tal:attributes="id string:span-${brain/UID}">
+                    <!-- -->
+                </span>
+            </div>
+        </tal:block>
+
+        <div tal:condition="show_content | python:False"
+             tal:attributes="id string:content-${here/UID}">
+            <table class="table">
+                <tal:block tal:repeat="brain python:downloadlisting.get_level(here.UID(),['Image','File'])">
+                    <tal:block tal:condition="python:listing=='1'">
+                        <metal:block metal:use-macro="here/listing_download/macros/listing"/>
+                    </tal:block>
+                    <tal:block tal:condition="python:listing=='2'">
+                       <metal:block metal:use-macro="here/listing_media_item/macros/main"/>
+                    </tal:block>
+                </tal:block>
+            </table>
+
+        </div>
+
+    </div>
+</metal:block>

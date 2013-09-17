@@ -1,0 +1,212 @@
+#download-listing-advanced .open,
+#download-listing-advanced .current{
+font-weight:normal;
+}
+
+.clear-both{clear:both;}
+
+#latest-downloads{
+background-color:#F2F2F2;
+padding:15px 15px 15px 15px;
+margin-bottom:20px;
+font-size:11px;
+}
+
+#latest-downloads table{
+width:100%;
+}
+
+#download-listing-advanced .heading{
+font-weight:bold;
+padding-bottom:10px;
+}
+
+.heading-outer{
+background-color:#F2F2F2;
+padding:15px 10px 8px 15px;
+}
+
+#download-listing-advanced .heading-outer .heading{
+padding:0px;
+}
+
+.gray-heading{
+color:#878787;
+font-size:13px;
+}
+
+#download-listing-advanced .download-navigation {
+list-style-image:none;
+list-style-type:none;
+margin:0px;
+font-size:11px;
+}
+
+.download-navigation .even {
+background-color:white;
+}
+
+.download-listing-advanced-table{
+width:100%;
+}
+
+.download-listing-advanced-table .odd,
+.download-listing-advanced-table .even{
+background-color:transparent;
+}
+.download-listing-advanced-table td{
+padding:6px 0px 4px 5px;
+vertical-align:top;
+border-bottom:1px solid #E1E1E1;
+}
+
+#download-listing-advanced .download-background {
+background-position:0px 0px;
+}
+
+#download-listing-advanced a {
+text-decoration: none !important;
+border:0px;
+}
+
+.latest-downloads td{
+padding-top:5px;
+padding-bottom:5px;
+}
+
+#download-listing-advanced .latest-downloads .download-background {
+background-position: 0 0;
+}
+
+
+#download-listing-advanced .media-item {
+border-bottom:1px solid #E1E1E1;
+padding-top:10px;
+padding-bottom:10px;
+
+}
+
+.media-item img{
+border: 1px solid #CCCCCC;
+padding: 5px;
+}
+
+#download-listing-advanced .media-item .image,
+#download-listing-advanced .media-item .file{
+float: left;
+min-height: 100px;
+width: 158px;
+}
+
+.icons{
+padding-right:5px;
+}
+
+#download-listing,
+#download-gallery{
+cursor:pointer;
+}
+
+.download-navigation .title{
+margin-bottom:5px;
+}
+
+.top-structure-download-listing .border td {
+border-bottom:1px solid #D2D2D2;
+}
+
+#download-listing-advanced .parent-click {
+border-bottom:1px solid #D2D2D2;
+display:block;
+padding-top: 7px;
+background-image:url(icon_arrow_right.png);
+background-repeat:no-repeat;
+background-position:9px 3px;
+cursor: pointer;
+padding-left: 38px;
+padding-bottom: 8px;
+}
+
+#download-listing-advanced .level2 .parent-click {
+padding-left: 48px;
+background-position: 19px 3px;
+}
+
+#download-listing-advanced .level3 .parent-click {
+padding-left: 58px;
+background-position: 29px 3px;
+}
+
+#download-listing-advanced .level4 .parent-click {
+padding-left: 68px;
+background-position: 39px 3px;
+}
+
+#download-listing-advanced .level5 .parent-click {
+padding-left: 78px;
+background-position: 49px 3px;
+}
+
+#download-listing-advanced .level6 .parent-click {
+padding-left: 88px;
+background-position: 59px 3px;
+}
+
+#download-listing-advanced .level7 .parent-click {
+padding-left: 98px;
+background-position: 69px 3px;
+}
+
+#download-listing-advanced  .icons {
+width:1px;
+padding-right:5px;
+}
+
+#download-listing-advanced .level1 .download-listing-advanced-media-table .media-item,
+#download-listing-advanced .level1 .download-listing-advanced-table .icons {
+padding-left: 38px;
+}
+
+#download-listing-advanced .level2 .download-listing-advanced-media-table .media-item,
+#download-listing-advanced .level2 .download-listing-advanced-table .icons {
+padding-left: 48px;
+}
+
+#download-listing-advanced .level3 .download-listing-advanced-media-table .media-item,
+#download-listing-advanced .level3 .download-listing-advanced-table .icons {
+padding-left: 58px;
+}
+
+#download-listing-advanced .level4 .download-listing-advanced-media-table .media-item,
+#download-listing-advanced .level4 .download-listing-advanced-table .icons {
+padding-left: 68px;
+}
+
+#download-listing-advanced .level5 .download-listing-advanced-media-table .media-item,
+#download-listing-advanced .level5 .download-listing-advanced-table .icons {
+padding-left: 78px;
+}
+
+#download-listing-advanced .level6 .download-listing-advanced-media-table .media-item,
+#download-listing-advanced .level6 .download-listing-advanced-table .icons {
+padding-left: 88px;
+}
+
+#download-listing-advanced .level7 .download-listing-advanced-media-table .media-item,
+#download-listing-advanced .level7 .download-listing-advanced-table .icons {
+padding-left: 98px;
+}
+
+#download-listing-advanced .download-background {
+padding-right:10px;
+}
+
+#download-listing-advanced .quickdownloads select {
+width:100%;
+}
+
+.download-listing-advanced-media-table:hover,
+.parent-click:hover,
+.download-listing-advanced-table tr:hover {
+background-color: #F2F2F2;
+}

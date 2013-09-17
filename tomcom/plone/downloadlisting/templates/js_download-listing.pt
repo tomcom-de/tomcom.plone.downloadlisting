@@ -1,0 +1,15 @@
+<tal:block tal:define="downloadlisting nocall:here/@@downloadlisting;
+                       form nocall:request/form;
+                       uid form/uid | nothing;
+                       listing form/listing | string:1">
+    <table class="table">
+        <tal:block tal:repeat="brain python:downloadlisting.get_level(uid,['Image','File'])">
+            <tal:block tal:condition="python:listing=='1'">
+                <metal:block metal:use-macro="here/listing_download_macro/macros/listing"/>
+            </tal:block>
+            <tal:block tal:condition="python:listing=='2'">
+               <metal:block metal:use-macro="here/download_listing_media_item/macros/main"/>
+            </tal:block>
+        </tal:block>
+    </table>
+</tal:block>

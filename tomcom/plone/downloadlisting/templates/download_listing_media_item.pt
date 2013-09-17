@@ -1,0 +1,68 @@
+<metal:block metal:define-macro="main"
+                i18n:domain="plone">
+    <div class="download-listing-advanced-media-table">
+    <div class="media-item">
+        <div class="image item"
+             tal:condition="python:brain.portal_type=='Image'">
+            <a tal:attributes="href string:${brain/getURL}/view">
+                <img tal:attributes="src string:${brain/getURL}/image_thumb"/>
+            </a>
+        </div>
+
+        <div class="file item"
+             tal:condition="python:brain.portal_type=='File'">
+                <a tal:attributes="href string:${brain/getURL}/view">
+                    <img tal:condition="python:brain.getContentType.endswith('word')"
+                         tal:attributes="src string:${brain/getURL}/doc.png"/>
+                    <img tal:condition="python:brain.getContentType.endswith('pdf')"
+                         tal:attributes="src string:${brain/getURL}/@@pdfpreview/get?width:int=100"/>
+                    <img tal:condition="python:brain.getContentType=='application/x-shockwave-flash'"
+                         tal:attributes="src string:${brain/getURL}/flash.png"/>
+                    <img tal:condition="python:brain.getContentType.endswith('excel')"
+                         tal:attributes="src string:${brain/getURL}/excel.png"/>
+                </a>
+                <tal:block tal:condition="python:brain.getContentType.startswith('video')">
+                    <tal:block tal:define="object_ brain/getObject"
+                               tal:content="structure python:object_.getBrowser('swfplayer').getHTML(width='200',height='150',backgroundImage='player-small.jpg')"/>
+                </tal:block>
+        </div>
+
+        <div class="float-left">
+            <div class="title">
+                <div class="overflow">
+                <a tal:attributes="href string:${brain/getURL}/view">
+                    <strong tal:content="brain/Title"/><br/>
+                </a>
+                </div>
+            </div>
+
+            <span class="date-file" tal:content="python:here.getAdapter('totime')(brain.modified)"/>
+            <br/>
+            <span class="file-type"><tal:block tal:content="brain/getContentType" i18n:translate=""/></span>
+
+
+            <div class="download-background">
+                <div class="float-left">
+                    <a tal:condition="python:brain.portal_type=='Image'"
+                       tal:attributes="href string:${brain/getURL}/at_download/image;">
+                        Download
+                    </a>
+                    <a tal:condition="python:brain.portal_type=='File'"
+                       tal:attributes="href string:${brain/getURL}/at_download/file;">
+                        Download
+                    </a>
+                </div>
+                <div class="float-right">
+                    <tal:block tal:content="brain/getObjSize"/>
+                </div>
+                <div class="clear-both"></div>
+            </div>
+
+            <div class="clear-both">
+            </div>
+        </div>
+        <div class="clear-both">
+        </div>
+    </div>
+    </div>
+</metal:block>

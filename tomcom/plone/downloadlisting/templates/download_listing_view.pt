@@ -1,0 +1,68 @@
+<metal:block metal:use-macro="here/main_template/macros/master"
+             i18n:domain="plone">
+
+
+<metal:block metal:fill-slot="head_slot">
+
+    <script type="text/javascript"
+            tal:attributes="src string:${here/portal_url}/++theme++downloadlisting/js/download_listing.js"></script>
+
+    <link rel="stylesheet" type="text/css" tal:attributes="href string:${here/portal_url}/++theme++downloadlisting/css/download_listing.css"/>
+
+</metal:block>
+
+<metal:block metal:fill-slot="content-core"
+     tal:define="downloadlisting nocall:context/@@downloadlisting;
+                 uid context/UID">
+
+    <a tal:attributes="href here/aq_parent/absolute_url"
+       i18n:translate="go_to_parent_url">
+        On level up
+    </a>
+
+    <div class="well"
+         tal:define="brains downloadlisting/get_latest"
+         tal:condition="brains">
+        <h3 i18n:translate="">Latest documents</h3>
+
+        <table cellspacing="0" cellpadding="0" border="0" class="top-structure-download-listing">
+            <tal:block tal:repeat="brain brains">
+                <tal:block tal:define="class_ python:not repeat['brain'].end and ' border' or ''">
+                    <metal:block metal:use-macro="here/download_listing_macro/macros/main"/>
+                </tal:block>
+            </tal:block>
+        </table>
+    </div>
+
+    <div class="well"
+         tal:define="brains python:downloadlisting.get_all('sortable_title')">
+        <h3 i18n:translate="">Quick Download</h3>
+
+        <select onchange="window.location.href=this.options[this.selectedIndex].value">
+            <option value=""
+                    i18n:translate="">Please select</option>
+
+            <option tal:repeat="brain brains"
+                    tal:attributes="value string:${brain/getURL}/download"
+                    tal:content="python: brain.Title + ' | ' + brain.getObjSize"/>
+        </select>
+
+    </div>
+
+    <div class="well">
+        <h3 i18n:translate="">Contents</h3>
+        <div class="float-right">
+            <span id="download-listing"
+                ><img src="list-view.png" title="Listing"
+                      i18n:attributes="title"
+            /></span>
+            <span id="download-gallery"
+                ><img src="gal-view.png" title="Gallery view"
+                      i18n:attributes="title"
+            /></span>
+        </div>
+        <metal:block metal:use-macro="here/js_download_listing_level/macros/main"/>
+    </div>
+</metal:block>
+
+</metal:block>

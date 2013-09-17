@@ -1,0 +1,34 @@
+<metal:block metal:define-macro="main"
+             tal:define="totime python:context.getAdapter('totime')">
+    <tr tal:attributes="class python:repeat['brain'].odd() and 'even' or 'odd'">
+        <td class="icons">
+            <a tal:attributes="href string:${brain/getURL}/view">
+                <img tal:attributes="src brain/getIcon">
+            </a>
+        </td>
+        <td>
+            <div>
+                <span class="title-file">
+                    <a tal:attributes="href string:${brain/getURL}/view"
+                       tal:content="brain/pretty_title_or_id"/> |</span>
+                <span class="date-file"
+                      tal:content="python:totime(brain.modified)"/>
+            </div>
+            <div class="description"
+                 tal:condition="brain/Description"
+                 tal:content="brain/Description"/>
+        </td>
+        <td align="right">
+            <div class="download-background">
+                <div class="float-left">
+                    <a tal:attributes="href string:${brain/getURL}/download">
+                        Download
+                    </a>
+                </div>
+                <div class="float-right">
+                    <tal:block tal:content="brain/getObjSize"/>
+                </div>
+            </div>
+        </td>
+    </tr>
+</metal:block>
